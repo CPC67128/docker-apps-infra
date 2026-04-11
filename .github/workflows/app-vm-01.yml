@@ -3,15 +3,6 @@ name: Deploy (only on app-vm-01)
 on:
   push:
     branches: [ "main" ]
-    # Only trigger when files in the repository root change (no subfolders)
-    paths:
-      - "*"           # root-level files only
-      - ".*"          # root-level dotfiles (optional)
-  pull_request:
-    branches: [ "main" ]
-    paths:
-      - "*"
-      - ".*"
 
 jobs:
   deploy:
