@@ -14,7 +14,7 @@ on:
       - ".*"
 
 jobs:
-  build:
+  deploy:
     # Target a specific self-hosted runner by label
     runs-on: [ self-hosted, linux, x64, app-vm-01 ]
     steps:
@@ -30,3 +30,9 @@ jobs:
         run: |
           pwd
           ls -la
+
+      - name: Deploy apps
+        run: |
+          cd ops/deploy
+          ./app-vm-01.sh
+
