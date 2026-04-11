@@ -21,8 +21,9 @@ docker network create back
 ```
 
 
+## GitHub Runner
 
-
+```
 sudo useradd -m -s /bin/bash github-runner
 sudo usermod -aG sudo github-runner
 sudo su - github-runner
@@ -31,16 +32,14 @@ curl -o actions-runner-linux-x64-2.333.1.tar.gz -L https://github.com/actions/ru
 tar xzf ./actions-runner-linux-x64-2.333.1.tar.gz
 ./config.sh --url https://github.com/CPC67128/docker-apps-infra --token XXXXXXXXXXXXXXXXXXXXXXXXX
 
-
 exit
 sudo passwd github-runner
 sudo su - github-runner
 
-
-
 sudo ./svc.sh install
 sudo ./svc.sh start
 sudo ./svc.sh status
+```
 
 
 
