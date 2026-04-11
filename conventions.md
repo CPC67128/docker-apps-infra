@@ -19,8 +19,8 @@ docker-apps-infra/
 │   └── monitoring/
 │
 └── ops/
-    ├── deploy/
-    │   ├── app-vm-01.md
-    │   └── db-vm-01.md
-    └── scripts/
+    ├── deploy/ (maybe should be scripts/)
+    │   ├── app-vm-01.md > .sh
+    │   └── db-vm-01.md > .sh
+
 

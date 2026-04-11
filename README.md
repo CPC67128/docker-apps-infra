@@ -45,9 +45,7 @@ sudo ./svc.sh status
 ```
 
 ```
-cd /srv/
-mkdir docker-apps-infra
-git clone
+cd /srv/docker-apps-infra
 git config --global --add safe.directory /srv/docker-apps-infra
 sudo chown -R github-runner:github-runner /srv/docker-apps-infra
 
@@ -55,7 +53,7 @@ sudo usermod -aG docker github-runner
 sudo systemctl restart actions.runner*
 systemctl list-units | grep actions.runner
 exit
-sudo passwd github-runner
+sudo su - github-runner
 id
 docker ps
 ```

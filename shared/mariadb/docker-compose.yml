@@ -1,0 +1,51 @@
+name: mariadb
+
+services:
+  mariadb:
+    image: mariadb:${MARIADB_IMAGE_TAG:-lts}
+    container_name: mariadb
+    restart: unless-stopped
+
+    env_file:
+      - .env
+
+    # Do NOT publish ports by default.
+    # Your apps (or phpMyAdmin) should reach it via Docker networking or private VM networking.
+    # If you really need host access for a short time, uncomment and bind to localhost:
+    # ports:
+    #   - "127.0.0.1:3306:3306"
+    ports:
+      - "3306:3306"
+
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+      # Optional: put init scripts here (executed only on FIRST init when datadir is empty)
+      # - ./init:/docker-entrypoint-initdb.d:ro
+
+      # Optional: custom config overrides (my.cnf fragments)
+      # - ./conf.d:/etc/mysql/conf.d:ro
+
+    networks:
+      - back
+
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      start_period: 20s
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+volumes:
+  mariadb_data:
+
+networks:
+  back:
+    external: true
+    name: back
