@@ -1,4 +1,4 @@
-name: CI (root only on app-vm-01)
+name: Deploy (only on app-vm-01)
 
 on:
   push:
@@ -14,7 +14,7 @@ on:
       - ".*"
 
 jobs:
-  build:
+  deploy:
     # Target a specific self-hosted runner by label
     runs-on: [ self-hosted, linux, x64, app-vm-01 ]
     steps:
@@ -34,5 +34,6 @@ jobs:
       - name: Deploy apps
         run: |
           cd ops/deploy
+          chmod +x app-vm-01.sh
           ./app-vm-01.sh
 
