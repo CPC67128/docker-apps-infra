@@ -1,0 +1,41 @@
+name: phpmyadmin
+
+services:
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:${PMA_IMAGE_TAG:-latest}
+    container_name: phpmyadmin
+    restart: unless-stopped
+
+    env_file:
+      - .env
+
+    # Keep it internal; expose to reverse proxy only
+    expose:
+      - "80"
+
+    networks:
+      - back
+      # Add front only if you REALLY need direct connectivity from a front-only proxy.
+      # - front
+
+    # Lightweight container healthcheck (checks the web UI responds)
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/ || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+networks:
+  front:
+    external: true
+    name: front
+  back:
+    external: true
+    name: back

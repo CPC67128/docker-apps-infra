@@ -1,9 +1,26 @@
-# HomeServer
-Home Server Setup
+# Server Setup
 
-## Ubuntu Server
+Proxmox / Ubuntu 24.04 LTS
 
-https://ubuntu.com/download/server
+```
+# apt update
+# apt full-upgrade
+# timedatectl set-timezone Europe/Paris
+# timedatectl
+```
+
+https://docs.docker.com/engine/install/ubuntu/
+
+```
+:/srv# git clone https://github.com/CPC67128/docker-apps-infra.git
+```
+
+```
+docker network create front
+docker network create back
+```
+
+
 
 ## Portainer
 
