@@ -14,7 +14,7 @@ on:
       - ".*"
 
 jobs:
-  deploy:
+  build:
     # Target a specific self-hosted runner by label
     runs-on: [ self-hosted, linux, x64, app-vm-01 ]
     steps:
