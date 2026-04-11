@@ -22,6 +22,31 @@ docker network create back
 
 
 
+
+sudo useradd -m -s /bin/bash github-runner
+sudo usermod -aG sudo github-runner
+sudo su - github-runner
+mkdir actions-runner && cd actions-runner
+curl -o actions-runner-linux-x64-2.333.1.tar.gz -L https://github.com/actions/runner/releases/download/v2.333.1/actions-runner-linux-x64-2.333.1.tar.gz
+tar xzf ./actions-runner-linux-x64-2.333.1.tar.gz
+./config.sh --url https://github.com/CPC67128/docker-apps-infra --token XXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+exit
+sudo passwd github-runner
+sudo su - github-runner
+
+
+
+sudo ./svc.sh install
+sudo ./svc.sh start
+sudo ./svc.sh status
+
+
+
+
+
+
 ## Portainer
 
 https://docs.portainer.io/start/install-ce/server/docker/linux

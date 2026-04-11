@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Running on self-hosted runner"
+      
+      
+      
+      
+cd apps/phpmyadmin
+docker compose up -d
+
+
+
+
+name: CI (root only on app-vm-01)
+
+on:
+  push:
+    branches: [ "main" ]
+    # Only trigger when files in the repository root change (no subfolders)
+    paths:
+      - "*"           # root-level files only
+      - ".*"          # root-level dotfiles (optional)
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - "*"
+      - ".*"
+
+jobs:
+  build:
+    # Target a specific self-hosted runner by label
+    runs-on: [ self-hosted, linux, x64, app-vm-01 ]
+    steps:
+      - name: Checkout (root files only)
+        uses: actions/checkout@v4
+        with:
+          # Sparse checkout to only bring root-level files
+          sparse-checkout: |
+            /*
+          sparse-checkout-cone-mode: false
+
+      - name: Show checked-out files
+        run: |
+          pwd
+          ls -la

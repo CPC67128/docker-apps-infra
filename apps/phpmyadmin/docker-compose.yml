@@ -10,8 +10,11 @@ services:
       - .env
 
     # Keep it internal; expose to reverse proxy only
-    expose:
-      - "80"
+    #expose:
+    #  - "80"
+    ports:
+      - "8080:80"
+
 
     networks:
       - back
