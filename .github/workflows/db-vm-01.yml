@@ -6,6 +6,7 @@ on:
     paths:
       - "ops/deploy/db-vm-01.sh"
       - "shared/mariadb/**"
+      - ".github/workflows/db-vm-01.yml"  # Trigger db-vm-01 deploy if db changes (optional)
 
 jobs:
   deploy:

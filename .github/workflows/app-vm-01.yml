@@ -6,6 +6,7 @@ on:
     paths:
       - "ops/deploy/app-vm-01.sh"
       - "apps/phpmyadmin/**"
+      - ".github/workflows/app-vm-01.yml"  # Trigger app-vm-01 deploy if db changes (optional)
 
 jobs:
   deploy:
