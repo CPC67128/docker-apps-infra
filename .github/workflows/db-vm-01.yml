@@ -3,6 +3,9 @@ name: Deploy (only on db-vm-01)
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - "ops/deploy/db-vm-01.sh"
+      - "shared/mariadb/**"
 
 jobs:
   deploy:

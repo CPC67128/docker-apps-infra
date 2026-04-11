@@ -3,6 +3,9 @@ name: Deploy (only on app-vm-01)
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - "ops/deploy/app-vm-01.sh"
+      - "apps/phpmyadmin/**"
 
 jobs:
   deploy:
