@@ -1,5 +1,7 @@
 # Server Setup
 
+## Operating System
+
 Proxmox / Ubuntu 24.04 LTS
 
 ```
@@ -8,6 +10,8 @@ Proxmox / Ubuntu 24.04 LTS
 # timedatectl set-timezone Europe/Paris
 # timedatectl
 ```
+
+## Docker
 
 https://docs.docker.com/engine/install/ubuntu/
 
@@ -19,7 +23,6 @@ https://docs.docker.com/engine/install/ubuntu/
 docker network create front
 docker network create back
 ```
-
 
 ## GitHub Runner
 
@@ -41,20 +44,27 @@ sudo ./svc.sh start
 sudo ./svc.sh status
 ```
 
-
-
-
-
-
-## Portainer
-
-https://docs.portainer.io/start/install-ce/server/docker/linux
-
 ```
-$ sudo docker volume create portainer_data
-$ sudo docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:2.21.1
-$ sudo docker ps
+cd /srv/
+mkdir docker-apps-infra
+git clone
+git config --global --add safe.directory /srv/docker-apps-infra
+sudo chown -R github-runner:github-runner /srv/docker-apps-infra
+
+sudo usermod -aG docker github-runner
+sudo systemctl restart actions.runner*
+systemctl list-units | grep actions.runner
+exit
+sudo passwd github-runner
+id
+docker ps
 ```
+
+======================================================================================================
+
+TO REVIEW LATER
+
+
 
 ## Nginx Proxy Manager
 
