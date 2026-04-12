@@ -46,12 +46,14 @@ services:
       - registry_data:/var/lib/registry
     entrypoint: >
       sh -c "
-      echo '0 3 * * 0 /bin/registry garbage-collect /etc/docker/registry/config.yml' > /etc/crontabs/root &&
-      crond -f
+      while true; do
+        echo 'Running registry garbage collection';
+        /bin/registry garbage-collect /etc/docker/registry/config.yml;
+        echo 'GC done, sleeping for 7 days';
+        sleep 604800;
+      done
       "
     restart: unless-stopped
-    profiles:
-      - maintenance
 
 volumes:
   registry_data:
