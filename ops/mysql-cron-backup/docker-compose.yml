@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+  mariadb-backup:
+    image: fradelg/mysql-cron-backup:latest
+    container_name: mariadb-backup
+    restart: unless-stopped
+
+    environment:
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASS: ${MYSQL_PASS}
+
+      # Optional: if unset, defaults to all databases [2](https://hub.docker.com/r/fradelg/mysql-cron-backup/tags)
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+
+      # Cron schedule (UTC by default in this image) [2](https://hub.docker.com/r/fradelg/mysql-cron-backup/tags)
+      CRON_TIME: ${CRON_TIME}
+
+      # Retention by number of backups [2](https://hub.docker.com/r/fradelg/mysql-cron-backup/tags)
+      MAX_BACKUPS: ${MAX_BACKUPS}
+
+      # Optional lifecycle actions [2](https://hub.docker.com/r/fradelg/mysql-cron-backup/tags)
+      INIT_BACKUP: ${INIT_BACKUP}
+      EXIT_BACKUP: ${EXIT_BACKUP}
+      INIT_RESTORE_LATEST: ${INIT_RESTORE_LATEST}
+
+      # Optional tuning flags [2](https://hub.docker.com/r/fradelg/mysql-cron-backup/tags)
+      MYSQLDUMP_OPTS: ${MYSQLDUMP_OPTS}
+      MYSQL_SSL_OPTS: ${MYSQL_SSL_OPTS}
+
+    volumes:
+      - ./backups:/backup

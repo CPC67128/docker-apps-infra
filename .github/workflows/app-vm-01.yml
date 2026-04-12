@@ -4,8 +4,8 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - "ops/deploy/app-vm-01.sh"
-      - "apps/phpmyadmin/**"
+      - "deploy/app-vm-01.sh"
+      - "apps/**"
       - ".github/workflows/app-vm-01.yml"  # Trigger app-vm-01 deploy if db changes (optional)
 
 jobs:
@@ -19,7 +19,7 @@ jobs:
           pwd
           git pull
           ls -la
-          cp ops/deploy/app-vm-01.sh . -f
+          cp deploy/app-vm-01.sh . -f
           chmod +x app-vm-01.sh
           ./app-vm-01.sh
 

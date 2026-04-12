@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd shared/mariadb
+cd db/mariadb
 # cp .env.example .env
 # edit .env
 docker compose up -d

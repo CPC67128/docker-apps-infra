@@ -4,9 +4,9 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - "ops/deploy/db-vm-01.sh"
-      - "shared/mariadb/**"
-      - ".github/workflows/db-vm-01.yml"  # Trigger db-vm-01 deploy if db changes (optional)
+      - "deploy/db-vm-01.sh"
+      - "db/**"
+      - ".github/workflows/db-vm-01.yml"
 
 jobs:
   deploy:
@@ -19,7 +19,7 @@ jobs:
           pwd
           git pull
           ls -la
-          cp ops/deploy/db-vm-01.sh . -f
+          cp deploy/db-vm-01.sh . -f
           chmod +x db-vm-01.sh
           ./db-vm-01.sh
 

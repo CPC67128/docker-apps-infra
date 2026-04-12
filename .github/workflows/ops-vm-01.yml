@@ -1,0 +1,25 @@
+name: Deploy (only on ops-vm-01)
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - "deploy/ops-vm-01.sh"
+      - "shared/**"
+      - ".github/workflows/ops-vm-01.yml"
+
+jobs:
+  deploy:
+    # Target a specific self-hosted runner by label
+    runs-on: [ self-hosted, linux, x64, ops-vm-01 ]
+    steps:
+      - name: Deploy ops-vm-01
+        run: |
+          cd /srv/docker-apps-infra
+          pwd
+          git pull
+          ls -la
+          cp deploy/ops-vm-01.sh . -f
+          chmod +x ops-vm-01.sh
+          ./ops-vm-01.sh
+
