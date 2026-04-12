@@ -3,6 +3,7 @@ name: nginx-proxy-manager
 services:
   web:
     image: jc21/nginx-proxy-manager:latest
+    container_name: nginx-proxy-manager
     ports:
       - 80:80
       - 443:443
