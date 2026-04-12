@@ -84,3 +84,16 @@ sudo su - github-runner
 id
 docker ps
 ```
+
+# Various commands
+
+## Registry
+
+Delete repository having no tags anymore:
+
+```
+github-runner@ops-vm-01:/srv/docker-apps-infra/ops/registry$ curl http://192.168.XXX.XXX:5000/v2/manalime/tags/list
+{"name":"manalime","tags":null}
+
+github-runner@ops-vm-01:/srv/docker-apps-infra/ops/registry$ docker exec registry bin/registry garbage-collect --delete-untagged  /etc/docker/registry/config.yml
+```
