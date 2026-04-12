@@ -1,0 +1,45 @@
+name: dolibarr
+
+services:
+    web:
+        # Choose the version of image to install
+        # dolibarr/dolibarr:latest (the latest stable version)
+        # dolibarr/dolibarr:develop
+        # dolibarr/dolibarr:x.y.z
+        image: dolibarr/dolibarr:latest
+        container_name: dolibarr_web
+        restart: unless-stopped
+
+        env_file:
+            - .env
+
+        environment:
+            DOLI_DB_HOST: ${MYSQL_HOST}
+            DOLI_DB_NAME: ${MYSQL_DATABASE}
+            DOLI_DB_USER: ${MYSQL_USER}
+            DOLI_DB_PASSWORD: ${MYSQL_PASSWORD}
+            DOLI_ADMIN_LOGIN: ${DOLI_ADMIN_LOGIN}
+            DOLI_ADMIN_PASSWORD: ${DOLI_ADMIN_PASSWORD}
+            DOLI_CRON: ${DOLI_CRON}
+            DOLI_CRON_KEY: ${DOLI_CRON_KEY}
+            DOLI_INIT_DEMO: ${DOLI_INIT_DEMO}
+            DOLI_COMPANY_NAME: ${DOLI_COMPANY_NAME}
+        ports:
+            - '8050:80'
+        networks:
+            - back
+        volumes:
+            - dolibarr_documents:/var/www/documents
+            - dolibarr_custom:/var/www/html/custom
+
+volumes:
+    dolibarr_documents:
+    dolibarr_custom:
+
+networks:
+    front:
+        external: true
+        name: front
+    back:
+        external: true
+        name: back
