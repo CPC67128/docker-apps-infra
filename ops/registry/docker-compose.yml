@@ -37,6 +37,22 @@ services:
     depends_on:
       - registry
 
+  registry-gc:
+    image: registry:2
+    container_name: registry-gc
+    depends_on:
+      - registry
+    volumes:
+      - registry-data:/var/lib/registry
+    entrypoint: >
+      sh -c "
+      echo '0 3 * * 0 /bin/registry garbage-collect /etc/docker/registry/config.yml' > /etc/crontabs/root &&
+      crond -f
+      "
+    restart: unless-stopped
+    profiles:
+      - maintenance
+
 volumes:
   registry_data:
 
