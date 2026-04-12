@@ -6,5 +6,6 @@ cd ops/mysql-cron-backup
 docker compose up -d
 
 cd ../../ops/registry
+docker compose down
 docker compose up -d
 
