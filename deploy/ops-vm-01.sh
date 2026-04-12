@@ -5,5 +5,6 @@ cd ops/mysql-cron-backup
 # edit .env
 docker compose up -d
 
-
+cd ../../ops/registry
+docker compose up -d
 
