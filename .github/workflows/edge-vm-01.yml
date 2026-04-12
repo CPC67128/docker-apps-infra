@@ -1,0 +1,25 @@
+name: Deploy (only on edge-vm-01)
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - "deploy/edge-vm-01.sh"
+      - "edge/**"
+      - ".github/workflows/edge-vm-01.yml"
+
+jobs:
+  deploy:
+    # Target a specific self-hosted runner by label
+    runs-on: [ self-hosted, linux, x64, edge-vm-01 ]
+    steps:
+      - name: Deploy edge-vm-01
+        run: |
+          cd /srv/docker-apps-infra
+          pwd
+          git pull
+          ls -la
+          cp deploy/edge-vm-01.sh . -f
+          chmod +x edge-vm-01.sh
+          ./edge-vm-01.sh
+

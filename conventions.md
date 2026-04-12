@@ -56,3 +56,21 @@ things used live by apps
 
 
 
+What “edge” means in general (strict definition)
+In infrastructure terms, the “edge” is the boundary where your internal systems meet the outside world (Internet or external networks).
+Multiple vendors define it consistently as:
+
+“The part of the network closest to users or external systems”
+
+
+
+
+2️⃣ Edge infrastructure (your case ✅)
+
+Reverse proxies
+Load balancers
+TLS termination
+Firewalls
+Gateways
+
+
