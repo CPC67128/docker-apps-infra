@@ -13,64 +13,46 @@ docker-apps-infra/
 │   │   └── README.md
 │   ├── app2/
 │
-├── shared/
+├── db/
+│   ├── mariadb/
+│
+├── edge/
 │   ├── reverse-proxy/
+│
+├── shared/
 │   ├── redis/
-│   └── monitoring/
 │
 └── ops/
     ├── deploy/ (maybe should be scripts/)
     │   ├── app-vm-01.md > .sh
     │   └── db-vm-01.md > .sh
 
+# VM structure
 
-On ops-vm-01, it is natural to later add:
+app-vm-01:
+* Application runtimes (apps, APIs, workers)
 
-PostgreSQL logical backups
-MariaDB validation jobs
-integrity checks
-export/sync containers
-retention enforcement
-On ops-vm-01, it is natural to later add:
+db-vm-01:
+* Primary data services (MariaDB, PostgreSQL engines)
 
-PostgreSQL logical backups
-MariaDB validation jobs
-integrity checks
-export/sync containers
-retention enforcement
+ops-vm-01: Operational / backend services (backups, maintenance, jobs)
+* PostgreSQL logical backups
+* MariaDB validation jobs
+* integrity checks
+* export/sync containers
+* retention enforcement
 
+shared-vm-01:
+* shared Redis / cache
+* shared middleware
+* admin UIs
+* things used live by apps
 
-app-vm-01Application runtimes (apps, APIs, workers)
-db-vm-01Primary data services (MariaDB, PostgreSQL engines)
-ops-vm-01Operational / backend services (backups, maintenance, jobs)
-
-
-
-shared-vm-01 is appropriate when a VM hosts:
-
-reverse proxy
-shared Redis / cache
-shared middleware
-admin UIs
-things used live by apps
-
-
-
-What “edge” means in general (strict definition)
-In infrastructure terms, the “edge” is the boundary where your internal systems meet the outside world (Internet or external networks).
-Multiple vendors define it consistently as:
-
+edge-vm-01:
+The “edge” is the boundary where internal systems meet the outside world (Internet or external networks).
 “The part of the network closest to users or external systems”
-
-
-
-
-2️⃣ Edge infrastructure (your case ✅)
-
-Reverse proxies
-Load balancers
-TLS termination
-Firewalls
-Gateways
-
-
+* Reverse proxies
+* Load balancers
+* TLS termination
+* Firewalls
+* Gateways
