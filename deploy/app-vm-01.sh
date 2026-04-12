@@ -5,4 +5,9 @@ cd apps/phpmyadmin
 # edit .env
 docker compose up -d
 
+cd apps/dolibarr
+# cp .env.example .env
+# edit .env
+docker compose up -d
+
 
