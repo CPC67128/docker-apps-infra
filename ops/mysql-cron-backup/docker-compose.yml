@@ -31,4 +31,12 @@ services:
       MYSQL_SSL_OPTS: ${MYSQL_SSL_OPTS}
 
     volumes:
-      - ./backups:/backup
+      - mariadb_backup:/backup
+
+volumes:
+  mariadb_backup:
+
+networks:
+  back:
+    external: true
+    name: back
