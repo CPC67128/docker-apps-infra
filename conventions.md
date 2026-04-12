@@ -1,5 +1,6 @@
 # Repository structure
 
+```
 docker-apps-infra/
 ├── README.md
 ├── conventions.md
@@ -26,9 +27,11 @@ docker-apps-infra/
     ├── deploy/ (maybe should be scripts/)
     │   ├── app-vm-01.md > .sh
     │   └── db-vm-01.md > .sh
+```
 
 # VM structure
 
+```
 app-vm-01:
 * Application runtimes (apps, APIs, workers)
 
@@ -56,3 +59,4 @@ The “edge” is the boundary where internal systems meet the outside world (In
 * TLS termination
 * Firewalls
 * Gateways
+```
