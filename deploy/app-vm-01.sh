@@ -10,4 +10,7 @@ cd ../../apps/dolibarr
 # edit .env
 docker compose up -d
 
+cd ../../apps/manalime
+docker compose up -d
+
 
