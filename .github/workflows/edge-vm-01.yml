@@ -13,7 +13,7 @@ jobs:
     # Target a specific self-hosted runner by label
     runs-on: [ self-hosted, linux, x64, edge-vm-01 ]
     steps:
-      - name: Deploy edge-vm-01
+      - name: Prepare deployment to edge-vm-01
         run: |
           cd /srv/docker-apps-infra
           pwd
@@ -21,5 +21,9 @@ jobs:
           ls -la
           cp deploy/edge-vm-01.sh . -f
           chmod +x edge-vm-01.sh
+
+      - name: Deploy edge-vm-01
+        run: |
+          cd /srv/docker-apps-infra
           ./edge-vm-01.sh
 

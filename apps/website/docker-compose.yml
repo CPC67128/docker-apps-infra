@@ -1,0 +1,14 @@
+services:
+  manalime:
+    image: 192.168.1.192:5000/stevefuchs-fr:latest
+    container_name: stevefuchs-fr
+    restart: unless-stopped
+    ports:
+      - "8010:80"
+    networks:
+      - front
+
+networks:
+    front:
+        external: true
+        name: front

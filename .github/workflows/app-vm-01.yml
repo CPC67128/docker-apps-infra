@@ -13,7 +13,7 @@ jobs:
     # Target a specific self-hosted runner by label
     runs-on: [ self-hosted, linux, x64, app-vm-01 ]
     steps:
-      - name: Deploy app-vm-01
+      - name: Prepare deployment to app-vm-01
         run: |
           cd /srv/docker-apps-infra
           pwd
@@ -21,5 +21,8 @@ jobs:
           ls -la
           cp deploy/app-vm-01.sh . -f
           chmod +x app-vm-01.sh
-          ./app-vm-01.sh
 
+      - name: Deploy app-vm-01
+        run: |
+          cd /srv/docker-apps-infra
+          ./app-vm-01.sh
