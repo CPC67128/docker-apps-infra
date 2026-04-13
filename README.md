@@ -97,3 +97,7 @@ github-runner@ops-vm-01:/srv/docker-apps-infra/ops/registry$ curl http://192.168
 
 github-runner@ops-vm-01:/srv/docker-apps-infra/ops/registry$ docker exec registry bin/registry garbage-collect --delete-untagged  /etc/docker/registry/config.yml
 ```
+
+## Tools
+
+sudo apt install ncdu
