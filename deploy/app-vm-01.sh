@@ -11,6 +11,6 @@ cd ../../apps/dolibarr
 docker compose up -d
 
 cd ../../apps/manalime
-docker compose up -d
+docker compose up -d # --pull always
 
 

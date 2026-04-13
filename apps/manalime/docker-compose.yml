@@ -5,3 +5,10 @@ services:
     restart: unless-stopped
     ports:
       - "8060:80"
+    networks:
+      - front
+
+networks:
+    front:
+        external: true
+        name: front
