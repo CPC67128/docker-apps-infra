@@ -5,7 +5,9 @@ cd ops/mysql-cron-backup
 # edit .env
 docker compose up -d
 
-cd ../../ops/registry
-docker compose down
+cd ../registry
+docker compose up -d
+
+cd ../gandi-live-dns
 docker compose up -d
 

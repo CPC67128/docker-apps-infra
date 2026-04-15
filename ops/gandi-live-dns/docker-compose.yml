@@ -1,0 +1,12 @@
+services:
+  gandi-live-dns:
+    image: 192.168.1.192:5000/gandi-live-dns:latest
+    container_name: gandi-live-dns
+    restart: unless-stopped
+    networks:
+      - back
+
+networks:
+    back:
+        external: true
+        name: back
