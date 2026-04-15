@@ -16,5 +16,5 @@ docker compose up -d --pull always
 cd ../website
 docker compose up -d --pull always
 
-cd ../webscraping-gold-silver
+cd ../webscraping
 docker compose up -d --pull always
