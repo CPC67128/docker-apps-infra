@@ -4,7 +4,7 @@ services:
     container_name: gandi-live-dns
     restart: unless-stopped
     networks:
-      - back
+      - front
 
 networks:
     front:
