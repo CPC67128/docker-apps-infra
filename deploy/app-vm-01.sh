@@ -18,3 +18,6 @@ docker compose up -d --pull always
 
 cd ../webscraping
 docker compose up -d --pull always
+
+cd ../stock-tracker
+docker compose up -d --pull always
