@@ -5,13 +5,16 @@ cd apps/phpmyadmin
 # edit .env
 docker compose up -d
 
-cd ../../apps/dolibarr
+cd ../dolibarr
 # cp .env.example .env
 # edit .env
 docker compose up -d
 
-cd ../../apps/manalime
+cd ../manalime
 docker compose up -d --pull always
 
-cd ../../apps/website
+cd ../website
+docker compose up -d --pull always
+
+cd ../webscraping-gold-silver
 docker compose up -d --pull always

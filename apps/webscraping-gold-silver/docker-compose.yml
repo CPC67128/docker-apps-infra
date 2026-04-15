@@ -1,0 +1,12 @@
+services:
+  manalime:
+    image: 192.168.1.192:5000/webscraping-gold-silver:latest
+    container_name: webscraping-gold-silver
+    restart: unless-stopped
+    networks:
+      - front
+
+networks:
+    front:
+        external: true
+        name: front
