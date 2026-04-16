@@ -23,6 +23,7 @@ services:
       - "8501:8501"
     environment:
       - TZ=Europe/Paris
+      - STREAMLIT_BASE_URL_PATH=/stocktracker
     logging:
       driver: "json-file"
       options:
