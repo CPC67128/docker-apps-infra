@@ -24,3 +24,6 @@ docker compose up -d --pull always
 
 cd ../wordpress
 docker compose up -d
+
+cd ../grafana
+docker compose up -d
