@@ -1,6 +1,6 @@
 services:
   wordpress:
-    image: wordpress:6-php8.2-apache
+    image: wordpress:6.9.4-php8.2-apache
     container_name: wp_app
     restart: unless-stopped
     environment:
@@ -8,12 +8,22 @@ services:
       WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
       WORDPRESS_DB_USER: ${MYSQL_USER}
       WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+      WORDPRESS_CONFIG_EXTRA: |
+        define('DISALLOW_FILE_EDIT', true);
+#        define('WP_HOME','https://example.com');
+#        define('WP_SITEURL','https://example.com');
     volumes:
       - wp_data:/var/www/html
     ports:
       - "8020:80"
     networks:
       - front
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+
 
 volumes:
   wp_data:
