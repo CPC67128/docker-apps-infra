@@ -22,6 +22,11 @@ jobs:
           cp deploy/app-vm-01.sh . -f
           chmod +x app-vm-01.sh
 
+      - name: Write .env from CONFIG secret
+        run: printf '%s' "$CONFIG" > apps/wordpress/.env
+        env:
+          CONFIG: ${{ secrets.WORDPRESS_ENV }}
+
       - name: Deploy app-vm-01
         run: |
           cd /srv/docker-apps-infra

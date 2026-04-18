@@ -21,3 +21,6 @@ docker compose up -d --pull always
 
 cd ../stock-tracker
 docker compose up -d --pull always
+
+cd ../wordpress
+docker compose up -d
