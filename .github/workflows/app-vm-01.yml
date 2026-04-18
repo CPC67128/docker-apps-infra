@@ -23,7 +23,7 @@ jobs:
           chmod +x app-vm-01.sh
 
       - name: Write .env from CONFIG secret
-        run: printf '%s' "$CONFIG" > apps/wordpress/.env
+        run: printf '%s' "$CONFIG" > /srv/docker-apps-infra/apps/wordpress/.env
         env:
           CONFIG: ${{ secrets.WORDPRESS_ENV }}
 
